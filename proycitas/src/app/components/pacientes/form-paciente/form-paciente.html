@@ -1,0 +1,43 @@
+<p>form-paciente works!</p>
+<div class="container mt-4">
+  <h2>{{ esEdicion ? 'Editar' : 'Nuevo' }} Paciente</h2>
+
+  <form (ngSubmit)="guardar()">
+    <div class="row">
+
+      <div class="col-md-6 mb-3" *ngIf="!esEdicion">
+        <label class="form-label">Usuario (Paciente)</label>
+        <select class="form-select" [(ngModel)]="paciente.id_paciente" name="id_paciente" required>
+          <option [ngValue]="undefined" disabled>-- Selecciona un usuario --</option>
+          <option *ngFor="let u of usuarios" [ngValue]="u.id_usuario">
+            {{ u.nombre_completo }}
+          </option>
+        </select>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Número de Expediente</label>
+        <input type="text" class="form-control" [(ngModel)]="paciente.numero_expediente" name="numero_expediente" required>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Fecha de Nacimiento</label>
+        <input type="date" class="form-control" [(ngModel)]="paciente.fecha_nacimiento" name="fecha_nacimiento" required>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Alergias</label>
+        <textarea class="form-control" [(ngModel)]="paciente.alergias" name="alergias" rows="2"></textarea>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Antecedentes</label>
+        <textarea class="form-control" [(ngModel)]="paciente.antecedentes" name="antecedentes" rows="2"></textarea>
+      </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-success me-2">Guardar</button>
+    <a routerLink="/pacientes" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>

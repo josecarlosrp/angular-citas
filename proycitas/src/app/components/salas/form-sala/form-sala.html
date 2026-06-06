@@ -1,0 +1,32 @@
+<p>form-sala works!</p>
+<div class="container mt-4">
+  <h2>{{ esEdicion ? 'Editar' : 'Nueva' }} Sala</h2>
+
+  <form (ngSubmit)="guardar()">
+    <div class="mb-3">
+      <label class="form-label">Nombre de la Sala</label>
+      <input type="text" class="form-control" [(ngModel)]="sala.nombre_sala" name="nombre_sala" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Edificio</label>
+      <select class="form-select" [(ngModel)]="sala.id_edificio" name="id_edificio" required>
+        <option [ngValue]="0" disabled>-- Selecciona un edificio --</option>
+        <option *ngFor="let edificio of edificios" [ngValue]="edificio.id_edificio">
+          {{ edificio.nombre_edificio }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Estatus</label>
+      <select class="form-select" [(ngModel)]="sala.estatus" name="estatus">
+        <option [ngValue]="true">Activo</option>
+        <option [ngValue]="false">Inactivo</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success me-2">Guardar</button>
+    <a routerLink="/salas" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>

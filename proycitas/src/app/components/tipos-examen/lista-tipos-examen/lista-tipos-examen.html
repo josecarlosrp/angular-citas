@@ -1,0 +1,29 @@
+<p>lista-tipos-examen works!</p>
+<div class="container mt-4">
+  <h2>Tipos de Examen</h2>
+  <a routerLink="/tipos-examen/nuevo" class="btn btn-primary mb-3">+ Nuevo Tipo</a>
+
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Nombre Corto</th>
+        <th>Descripción</th>
+        <th>Estatus</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tipo of tiposExamen">
+        <td>{{ tipo.id_tipo_examen }}</td>
+        <td>{{ tipo.nombre_corto }}</td>
+        <td>{{ tipo.descripcion }}</td>
+        <td>{{ tipo.estatus ? 'Activo' : 'Inactivo' }}</td>
+        <td>
+          <a [routerLink]="['/tipos-examen/editar', tipo.id_tipo_examen]" class="btn btn-warning btn-sm me-2">Editar</a>
+          <button (click)="eliminar(tipo.id_tipo_examen!)" class="btn btn-danger btn-sm">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

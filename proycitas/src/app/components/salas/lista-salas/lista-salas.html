@@ -1,0 +1,29 @@
+<p>lista-salas works!</p>
+<div class="container mt-4">
+  <h2>Salas</h2>
+  <a routerLink="/salas/nuevo" class="btn btn-primary mb-3">+ Nueva Sala</a>
+
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>ID Edificio</th>
+        <th>Estatus</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sala of salas">
+        <td>{{ sala.id_sala }}</td>
+        <td>{{ sala.nombre_sala }}</td>
+        <td>{{ sala.id_edificio }}</td>
+        <td>{{ sala.estatus ? 'Activo' : 'Inactivo' }}</td>
+        <td>
+          <a [routerLink]="['/salas/editar', sala.id_sala]" class="btn btn-warning btn-sm me-2">Editar</a>
+          <button (click)="eliminar(sala.id_sala!)" class="btn btn-danger btn-sm">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

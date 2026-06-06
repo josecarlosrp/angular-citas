@@ -1,0 +1,28 @@
+<p>lista-puestos works!</p>
+<div class="container mt-4">
+  <h2>Puestos</h2>
+
+  <a routerLink="/puestos/nuevo" class="btn btn-primary mb-3">+ Nuevo Puesto</a>
+
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Estatus</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let puesto of puestos">
+        <td>{{ puesto.id_puesto }}</td>
+        <td>{{ puesto.nombre_puesto }}</td>
+        <td>{{ puesto.estatus ? 'Activo' : 'Inactivo' }}</td>
+        <td>
+          <a [routerLink]="['/puestos/editar', puesto.id_puesto]" class="btn btn-warning btn-sm me-2">Editar</a>
+          <button (click)="eliminar(puesto.id_puesto!)" class="btn btn-danger btn-sm">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
